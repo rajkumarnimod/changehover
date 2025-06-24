@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChangeHover Animation Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/changehover.css" />
+    <style>
+      :root {
+    /* Primary colors */
+    --primary: #4a6cf7;
+    --primary-dark: #3a5af0;
+    --secondary: #09f1b8;
+    --accent: #ff00d2;
+
+    /* Backgrounds */
+    --bg-light: #f8f9ff;
+    --bg-dark: #1a1d2e;
+    --card-bg: #ffffff;
+
+    /* Text */
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --text-white: #ffffff;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    /* Borders */
+    --border-radius: 12px;
+    --border-color: #e2e8f0;
+
+    /* Animation defaults */
+    --anim-duration: 0.5s;
+    --anim-timing: ease;
+    --anim-delay: 0s;
+    --anim-repeat: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--bg-light);
+    overflow-x: hidden;
+}
+
+::selection {
+    background: #8fe9a5d5;
+    color: #fff;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 50px 0;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    color: var(--text-light);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Header */
+header {
+    background: var(--bg-dark);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: var(--secondary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1a1d2e 0%, #2d325a 100%);
+    width: 100%;
+    height: 100%;
+    --color: rgba(49, 48, 48, 0.3);
+    background-color: #1a1d2e;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
+    background-size: 55px 55px;
+    color: white;
+    padding: 100px 0 140px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2.5rem;
+}
+
+.hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.hero-demo {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.1;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(74, 108, 247, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.feature-icon i {
+    font-size: 30px;
+    color: var(--primary);
+}
+
+/* Animation Showcase */
+.showcase {
+    background: linear-gradient(to bottom, var(--bg-light) 0%, #f0f4ff 100%);
+}
+
+.category-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.animations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.animation-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.animation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.animation-preview {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #87c9e8, #f0d86b);
+    position: relative;
+    overflow: hidden;
+}
+
+.animation-demo {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.animation-info {
+    padding: 20px;
+}
+
+.animation-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+}
+
+.animation-usage {
+    background: #f8f9ff;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    overflow-x: auto;
+    color: var(--primary);
+    border: 1px dashed var(--border-color);
+}
+
+/* Installation */
+.install {
+    background: var(--bg-dark);
+    color: white;
+}
+
+.install h2,
+.install p {
+    color: white;
+}
+
+.install h2:after {
+    background: var(--secondary);
+}
+
+.code-block {
+    background: #2d325a;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    margin: 30px 0;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    box-shadow: var(--shadow-md);
+}
+
+.code-block code {
+    display: block;
+}
+
+.code-comment {
+    color: #64748b;
+}
+
+.code-tag {
+    color: #ff79c6;
+}
+
+.code-attr {
+    color: #50fa7b;
+}
+
+.code-value {
+    color: #f1fa8c;
+}
+
+/* Usage Examples */
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.example-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.example-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.example-preview {
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.example-demo {
+    width: 120px;
+    height: 120px;
+    background: var(--primary);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.example-code {
+    padding: 20px;
+    background: #f8f9ff;
+    border-top: 1px solid var(--border-color);
+    font-family: monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-dark);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 80px 0;
+    }
+
+    .hero-demo {
+        display: none;
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+}
+
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Toggle Button */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Responsive Nav */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-dark);
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: 200px;
+        padding: 20px;
+        box-shadow: var(--shadow-md);
+        border-radius: var(--border-radius);
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+.heading {
+    color: transparent;
+    /* background: linear-gradient(90deg,#14b8a6 , #fcac23 50%, #347e85 98%); */
+    background: linear-gradient(to right, #97fde3, #71c2f2, #ff00d0ea, #f5d93e, #7df7e9, #f0c780 50%, #95e0e6 98%);
+    ;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 300% 100%;
+    animation: animat 6s ease infinite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    -webkit-text-stroke-color: transparent;
+}
+
+@keyframes animat {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.topb {
+    height: 3px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #f5d93e;
+    width: 100%;
+    transform-origin: left;
+    scale: 0 1;
+    animation: scroll-watch linear;
+    animation-timeline: scroll();
+}
+
+@keyframes scroll-watch {
+    to {
+        scale: 1 1;
+    }
+}
+
+.animation-icon {
+    font-size: 40px;
+}
+
+.animation-item{
+    background-color: rgb(250, 251, 239);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px 5px;
+    margin: 5px 0;
+    border: 1px solid rgb(224, 223, 223);
+}
+
+.border-animation-grid {
+  display: grid;
+  gap: 1rem; /* gap between grid items */
+  grid-template-columns: repeat(1, 1fr); /* Default: 1 column */
+
+  /* Medium screen (≥768px) */
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Large screen (≥1024px) */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+.example-section {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  background: #f9f9f9;
+}
+
+.example-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.example-icon {
+  font-size: 2.5rem;
+  color: #09f1b8;
+  margin-bottom: 1rem;
+}
+
+.example-heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.example-text {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.example-button {
+  background-color: #09f1b8;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.github{
+font-size: 34px;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="topb"></div>
+    <!-- Header -->
+  <header>
+  <div class="container">
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <i class="fas fa-bolt"></i> ChangeHover
+      </a>
+
+      <!-- Hamburger Button -->
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="nav-links" id="nav-links">
+        <a href="#features">Features</a>
+        <a href="#showcase">Animations</a>
+        <a href="#install">Installation</a>
+        <a href="#examples">Examples</a>
+        <a href="#docs">Documentation</a>
+        <!-- GitHub Link -->
+        <a href="https://github.com/your-username/changehover" target="_blank" title="View on GitHub">
+          <i class="fab fa-github github"></i>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="heading">
+            Bring Your Website to Life with CSS Animations
+          </h1>
+          <p>
+            ChangeHover is a comprehensive library of 150+ CSS hover animations.
+          </p>
+          <div class="hero-btns">
+            <a href="#install" class="btn">Get Started</a>
+            <a href="#showcase" class="btn btn-secondary">View Animations</a>
+          </div>
+        </div>
+        <div class="hero-demo"></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+      <div class="container">
+        <h2>Why Developers Love ChangeHover</h2>
+        <p>
+          A blazing-fast hover animation library built for every framework and
+          every device.
+        </p>
+
+        <div class="features-grid">
+          <!-- Feature Cards -->
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>150+ Hover Effects</h3>
+            <p>
+              From subtle fades to vibrant text and border effects—ChangeHover
+              has it all.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-feather"></i></div>
+            <h3>Featherlight Build</h3>
+            <p>
+              Under 12KB (minified), zero dependencies—perfect for
+              performance-focused projects.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+            <h3>Core Animations</h3>
+            <p>
+              Includes animations like fade, grow, pulse, bounce, and move to
+              enhance UI interactivity.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Mobile-Ready</h3>
+            <p>
+              Every animation is smooth, fluid, and optimized for touch-based
+              devices.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-globe"></i></div>
+            <h3>Cross-Browser Support</h3>
+            <p>
+              Works seamlessly on Chrome, Firefox, Safari, Edge, and even legacy
+              browsers.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-code"></i></div>
+            <h3>Plug & Play</h3>
+            <p>
+              Just add an attribute like <code>hover:ch-fade</code>—no extra
+              JavaScript required.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase -->
+    <section id="showcase" class="showcase">
+      <div class="container">
+        <h2>Animation Gallery</h2>
+        <p>Explore our collection</p>
+
+        <!-- Tabs -->
+        <div class="category-tabs">
+          <div class="tab-btn active" data-tab="core">
+            <i class="fas fa-bolt"></i> Core Animations
+          </div>
+          <div class="tab-btn" data-tab="text">
+            <i class="fas fa-font"></i> Text Effects
+          </div>
+          <div class="tab-btn" data-tab="advanced">
+            <i class="fas fa-border-style"></i> Border Effects
+          </div>
+        </div>
+
+        <div class="tab-content active" id="core">
+          <h2>Core Animations</h2>
+          <div class="animations-grid" id="animationContainer">
+            <!-- JS will populate this with 106 cards -->
+          </div>
+        </div>
+
+        <div class="tab-content" id="text">
+          <h2>text Animations</h2>
+          <div class="animations-grid" id="textanimationContainer"></div>
+        </div>
+
+        <div class="tab-content" id="advanced">
+          <div id="animation-Container">
+            <div class="demo-section">
+              <h2>Border Animations</h2>
+              <div class="border-animation-grid">
+                <!-- Left to Right -->
+                <div hover:ch-border-ltr class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-ltr
+                </div>
+
+                <!-- Right to Left -->
+                <div hover:ch-border-rtl class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-rtl
+                </div>
+
+                <!-- Top to Bottom -->
+                <div hover:ch-border-ttb class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-ttb
+                </div>
+
+                <!-- Bottom to Top -->
+                <div hover:ch-border-btt class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-btt
+                </div>
+
+                <!-- Dashed -->
+                <div hover:ch-border-dashed class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-dashed
+                </div>
+
+                <!-- Border Radius -->
+                <div hover:ch-border-radius class="animation-item">
+                  hover:ch-border-radius
+                </div>
+
+                <!-- Wave -->
+                <div hover:ch-border-wave class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-wave
+                </div>
+
+                <!-- Shimmer -->
+                <div hover:ch-border-shimmer class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-shimmer
+                </div>
+
+                <!-- Flow -->
+                <div hover:ch-border-flow class="animation-item">
+                  <span class="ch-animation-helper"></span>
+                  hover:ch-border-flow
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation -->
+    <section id="install" class="install">
+      <div class="container">
+        <h2>Get Started in Seconds</h2>
+        <p>Integrate ChangeHover into your project</p>
+        <h3>Install via CDN</h3>
+        <div class="code-block">
+          <code
+            >&lt;link rel="stylesheet"
+            href="https://cdn.changehover.com/v1/changehover.min.css"&gt;</code
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="container">
+        <h2>Animation Gallery</h2>
+        <p>Explore our collection</p>
+        <div class="example-section">
+        <div class="example-card">
+          <i class="fas fa-magic example-icon"></i>
+          <h3 class="example-heading">Core Animations</h3>
+          <p class="example-text">
+            Add fade, grow, pulse and bounce effects easily.
+          </p>
+          <button class="example-button" hover:ch-bounce>Try Hover</button>
+        </div>
+
+        <div class="example-card">
+          <i class="fas fa-font example-icon"></i>
+          <h3 class="example-heading" hover:ch-text-gradient-flow>Text Effects</h3>
+          <p class="example-text">
+            Animate text with wave, bounce, reveal and more.
+          </p>
+          <button class="example-button">Try Hover</button>
+        </div>
+
+        <div class="example-card">
+          <i class="fas fa-border-style example-icon"></i>
+           <div hover:ch-border-ltr>
+                  <span class="ch-animation-helper"></span>
+                  <h3 class="example-heading">Border Effects</h3>
+                </div>
+          
+          <p class="example-text">
+            Decorate elements with animated border styles.
+          </p>
+          <button class="example-button">Try Hover</button>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>ChangeHover</h3>
+            <p>
+              The ultimate CSS animation library for modern web development.
+              Lightweight, customizable, and packed with 150+ animations.
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Animation Gallery</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">GitHub Repository</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Community</h3>
+            <ul class="footer-links">
+              <li><a href="#">GitHub Issues</a></li>
+              <li><a href="#">Discord Community</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Contribution Guide</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+              <li><a href="#">MIT License</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 ChangeHover Animation Library. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+
+      // Remove active classes
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Add active to current
+      button.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    toggleBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Optional: close on nav link click (for better UX)
+    document.querySelectorAll('#nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+});
+
+</script>
+
+    <script>
+      // All 106 hover animation class names
+      const animationClasses = [
+        "ch-fade",
+        "ch-grow",
+        "ch-shrink",
+        "ch-pulse",
+        "ch-pulse-grow",
+        "ch-pulse-shrink",
+        "ch-push",
+        "ch-pop",
+        "ch-bounce-in",
+        "ch-bounce-out",
+        "ch-rotate",
+        "ch-rotate-grow",
+        "ch-float",
+        "ch-sink",
+        "ch-bob",
+        "ch-hang",
+        "ch-skew",
+        "ch-skew-forward",
+        "ch-skew-backward",
+        "ch-wobble-horizontal",
+        "ch-wobble-vertical",
+        "ch-buzz",
+        "ch-buzz-out",
+        "ch-forward",
+        "ch-backward",
+        "ch-fade-back",
+        "ch-back-pulse",
+        "ch-bounce",
+        "ch-flash",
+        "ch-rubberBand",
+        "ch-shakeX",
+        "ch-shakeY",
+        "ch-headShake",
+        "ch-swing",
+        "ch-tada",
+        "ch-jello",
+        "ch-heartBeat",
+        "ch-backInDown",
+        "ch-backInLeft",
+        "ch-backInRight",
+        "ch-backInUp",
+        "ch-backOutDown",
+        "ch-backOutLeft",
+        "ch-backOutRight",
+        "ch-backOutUp",
+        "ch-bounceIn",
+        "ch-bounceInDown",
+        "ch-bounceInLeft",
+        "ch-bounceInRight",
+        "ch-bounceInUp",
+        "ch-bounceOut",
+        "ch-bounceOutDown",
+        "ch-bounceOutLeft",
+        "ch-bounceOutRight",
+        "ch-bounceOutUp",
+        "ch-fadeIn",
+        "ch-fadeInDown",
+        "ch-fadeInLeft",
+        "ch-fadeInRight",
+        "ch-fadeInUp",
+        "ch-fadeOut",
+        "ch-fadeOutDown",
+        "ch-fadeOutLeft",
+        "ch-fadeOutRight",
+        "ch-fadeOutUp",
+        "ch-flip",
+        "ch-flipInX",
+        "ch-flipInY",
+        "ch-flipOutX",
+        "ch-flipOutY",
+        "ch-lightSpeedInRight",
+        "ch-lightSpeedInLeft",
+        "ch-lightSpeedOutRight",
+        "ch-lightSpeedOutLeft",
+        "ch-rotateIn",
+        "ch-rotateInDownLeft",
+        "ch-rotateInDownRight",
+        "ch-rotateInUpLeft",
+        "ch-rotateInUpRight",
+        "ch-rotateOut",
+        "ch-rotateOutDownLeft",
+        "ch-rotateOutDownRight",
+        "ch-rotateOutUpLeft",
+        "ch-rotateOutUpRight",
+        "ch-hinge",
+        "ch-jackInTheBox",
+        "ch-rollIn",
+        "ch-rollOut",
+        "ch-zoomIn",
+        "ch-zoomInDown",
+        "ch-zoomInLeft",
+        "ch-zoomInRight",
+        "ch-zoomInUp",
+        "ch-zoomOut",
+        "ch-zoomOutDown",
+        "ch-zoomOutLeft",
+        "ch-zoomOutRight",
+        "ch-zoomOutUp",
+        "ch-slideInDown",
+        "ch-slideInLeft",
+        "ch-slideInRight",
+        "ch-slideInUp",
+        "ch-slideOutDown",
+        "ch-slideOutLeft",
+        "ch-slideOutRight",
+        "ch-slideOutUp",
+      ];
+
+      const animationContainer = document.getElementById("animationContainer");
+
+      animationClasses.map((className) => {
+        const name = className.replace("ch-", "").replace(/-/g, " ");
+        const card = document.createElement("div");
+        card.className = "animation-card";
+
+        // Create the animation demo div with custom attribute
+        const demoDiv = document.createElement("div");
+        demoDiv.className = "animation-demo";
+        demoDiv.setAttribute(`hover:${className}`, ""); // This makes your custom hover CSS work
+        demoDiv.innerHTML = `<i class="fa-regular fa-image animation-icon"></i>`;
+
+        // Append card content
+        card.innerHTML = `
+      <div class="animation-preview"></div>
+      <div class="animation-info">
+        <h3 class="animation-name">${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        }</h3>
+        <div class="animation-usage">hover:${className}</div>
+        <p>Hover effect: ${name}</p>
+      </div>
+    `;
+
+        // Add demoDiv to preview section
+        card.querySelector(".animation-preview").appendChild(demoDiv);
+
+        // Add card to container
+        animationContainer.appendChild(card);
+      });
+    </script>
+
+    <script>
+      // All 106 hover animation class names
+      const textanimationClasses = [
+        "ch-text-gradient-flow",
+        "ch-text-glitch",
+        "ch-text-neon",
+        "ch-text-bounce",
+        "ch-text-wave",
+        "ch-text-rotate3d",
+        "ch-text-fade-in",
+        "ch-text-slide-in",
+        "ch-text-zoom-in",
+        "ch-text-shake",
+        "ch-text-pulse",
+        "ch-text-wobble",
+        "ch-text-blink",
+        "ch-text-swing",
+        "ch-text-jelly",
+        "ch-text-skew",
+        "ch-text-fly-in",
+        "ch-text-reveal",
+      ];
+
+      const textanimationContainer = document.getElementById(
+        "textanimationContainer"
+      );
+
+      textanimationClasses.map((className) => {
+        const name = className.replace("ch-", "").replace(/-/g, " ");
+        const card = document.createElement("div");
+        card.className = "animation-card";
+
+        // Create the animation demo div with custom attribute
+        const demoDiv = document.createElement("div");
+        demoDiv.className = "animation-demo";
+        demoDiv.setAttribute(`hover:${className}`, ""); // This makes your custom hover CSS work
+        demoDiv.innerHTML = `Hover`;
+
+        // Append card content
+        card.innerHTML = `
+      <div class="animation-preview"></div>
+      <div class="animation-info">
+        <h3 class="animation-name">${
+          name.charAt(0).toUpperCase() + name.slice(1)
+        }</h3>
+        <div class="animation-usage">hover:${className}</div>
+        <p>Hover effect: ${name}</p>
+      </div>
+    `;
+
+        // Add demoDiv to preview section
+        card.querySelector(".animation-preview").appendChild(demoDiv);
+
+        // Add card to container
+        textanimationContainer.appendChild(card);
+      });
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

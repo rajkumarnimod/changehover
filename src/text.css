@@ -1,0 +1,321 @@
+/* ======================= */
+/* ROOT VARIABLES & RESET  */
+/* ======================= */
+:root {
+    /* Library configuration variables */
+    --ch-duration: 1.2s;
+    --ch-delay: 0s;
+    --ch-timing: ease;
+    --ch-repeat: infinite;
+    --ch-reveal-color1: #333;
+    --ch-reveal-color2: #222;
+    --ch-gradient-colors: #09f1b8, #00a2ff, #ff00d2, #fed90f;
+    --ch-gradient-size: 300%;
+    --ch-gradient-direction: to right;
+    --ch-accent: #4a6cf7;
+    
+    /* Utility variables */
+    --ch-spacing: 1rem;
+    --ch-border-radius: 8px;
+    --ch-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* TEXT ANIMATIONS (40+)   */
+
+/* Typewriter Effect */
+[hover\:ch-text-typewriter]:hover {
+    overflow: hidden;
+    border-right: 0.15em solid var(--ch-accent);
+    white-space: nowrap;
+    animation: ch-typewriter steps(40) 1s forwards, ch-blink-caret 0.75s step-end infinite;
+}
+
+@keyframes ch-typewriter {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes ch-blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--ch-accent); }
+}
+
+/* Gradient Flow */
+[hover\:ch-text-gradient-flow]:hover {
+    background: linear-gradient(45deg, #ff8a00, #da1b60, #00a2ff);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: ch-gradient-flow 4s ease infinite;
+}
+
+@keyframes ch-gradient-flow {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
+/* Glitch Effect */
+[hover\:ch-text-glitch]:hover {
+    position: relative;
+    animation: ch-text-glitch 0.65s linear infinite;
+}
+
+@keyframes ch-text-glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-5px, 5px) }
+    40% { transform: translate(-5px, -5px) }
+    60% { transform: translate(5px, 5px) }
+    80% { transform: translate(5px, -5px) }
+    100% { transform: translate(0) }
+}
+
+/* Neon Effect */
+[hover\:ch-text-neon]:hover {
+    animation: ch-text-neon 1.5s ease infinite;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--ch-accent), 0 0 40px var(--ch-accent);
+}
+
+@keyframes ch-text-neon {
+    0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--ch-accent), 0 0 40px var(--ch-accent); }
+    50% { text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px var(--ch-accent), 0 0 20px var(--ch-accent); }
+}
+
+/* Bounce Effect */
+[hover\:ch-text-bounce]:hover {
+    animation: ch-text-bounce 1s ease infinite;
+}
+
+@keyframes ch-text-bounce {
+    0%, 100% { transform: translateY(0) }
+    25% { transform: translateY(-15px) }
+    50% { transform: translateY(0) }
+    75% { transform: translateY(-7px) }
+}
+
+/* Wave Effect */
+[hover\:ch-text-wave]:hover {
+    display: inline-block;
+    animation: ch-text-wave 1s ease infinite;
+}
+
+@keyframes ch-text-wave {
+    0% { transform: translateY(0px) }
+    50% { transform: translateY(-15px) }
+    100% { transform: translateY(0px) }
+}
+
+/* Rotate 3D */
+[hover\:ch-text-rotate3d]:hover {
+    animation: ch-text-rotate3d 2s ease infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes ch-text-rotate3d {
+    0% { transform: rotateX(0) rotateY(0) rotateZ(0) }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg) }
+}
+
+/* Fade In */
+[hover\:ch-text-fade-in]:hover {
+    animation: ch-text-fade-in 1.2s ease forwards;
+}
+
+@keyframes ch-text-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide In */
+[hover\:ch-text-slide-in]:hover {
+    animation: ch-text-slide-in 1s ease forwards;
+}
+
+@keyframes ch-text-slide-in {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Flip In */
+[hover\:ch-text-flip-in]:hover {
+    animation: ch-text-flip-in 1.2s ease forwards;
+    transform-origin: center;
+}
+
+@keyframes ch-text-flip-in {
+    from { transform: rotateY(90deg); opacity: 0; }
+    to { transform: rotateY(0); opacity: 1; }
+}
+
+/* Zoom In */
+[hover\:ch-text-zoom-in]:hover {
+    animation: ch-text-zoom-in 0.8s ease forwards;
+}
+
+@keyframes ch-text-zoom-in {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Shake */
+[hover\:ch-text-shake]:hover {
+    animation: ch-text-shake 0.5s ease infinite;
+}
+
+@keyframes ch-text-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Pulse */
+[hover\:ch-text-pulse]:hover {
+    animation: ch-text-pulse 1.5s ease infinite;
+}
+
+@keyframes ch-text-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Wobble */
+[hover\:ch-text-wobble]:hover {
+    animation: ch-text-wobble 1.2s ease infinite;
+}
+
+@keyframes ch-text-wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+/* Blink */
+[hover\:ch-text-blink]:hover {
+    animation: ch-text-blink 1s step-end infinite;
+}
+
+@keyframes ch-text-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Swing */
+[hover\:ch-text-swing]:hover {
+    transform-origin: top center;
+    animation: ch-text-swing 1.5s ease infinite;
+}
+
+@keyframes ch-text-swing {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+/* Jelly */
+[hover\:ch-text-jelly]:hover {
+    animation: ch-text-jelly 1s ease infinite;
+}
+
+@keyframes ch-text-jelly {
+    0%, 100% { transform: scale(1, 1); }
+    25% { transform: scale(1.2, 0.8); }
+    50% { transform: scale(0.8, 1.2); }
+    75% { transform: scale(1.1, 0.9); }
+}
+
+/* Skew */
+[hover\:ch-text-skew]:hover {
+    animation: ch-text-skew 1.2s ease infinite;
+}
+
+@keyframes ch-text-skew {
+    0%, 100% { transform: skewX(0); }
+    50% { transform: skewX(15deg); }
+}
+
+/* Fly In */
+[hover\:ch-text-fly-in]:hover {
+    animation: ch-text-fly-in 1s ease forwards;
+}
+
+@keyframes ch-text-fly-in {
+    from { transform: translateY(100px) rotate(10deg); opacity: 0; }
+    to { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+/* Reveal */
+[hover\:ch-text-reveal]:hover {
+    position: relative;
+    overflow: hidden;
+}
+
+[hover\:ch-text-reveal]:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ch-accent);
+    animation: ch-text-reveal 1.5s ease forwards;
+}
+
+@keyframes ch-text-reveal {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(101%); }
+}
+
+/* Stretch */
+[hover\:ch-text-stretch]:hover {
+    animation: ch-text-stretch 1.2s ease infinite;
+}
+
+@keyframes ch-text-stretch {
+    0%, 100% { letter-spacing: normal; }
+    50% { letter-spacing: 10px; }
+}
+
+/* Shadow Pulse */
+[hover\:ch-text-shadow-pulse]:hover {
+    animation: ch-text-shadow-pulse 1.5s ease infinite;
+}
+
+@keyframes ch-text-shadow-pulse {
+    0%, 100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
+
+/* Gradient Shift */
+[hover\:ch-text-gradient-shift]:hover {
+    background: linear-gradient(45deg, #ff8a00, #da1b60, #00a2ff, #00c9ff);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: ch-gradient-shift 6s ease infinite;
+}
+
+@keyframes ch-gradient-shift {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+}
+
+/* Letter Flip */
+[hover\:ch-text-letter-flip]:hover span {
+    display: inline-block;
+    animation: ch-letter-flip 1s ease forwards;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes ch-letter-flip {
+    from { transform: rotateX(90deg); opacity: 0; }
+    to { transform: rotateX(0); opacity: 1; }
+}
+
+/* Glow */
+[hover\:ch-text-glow]:hover {
+    animation: ch-text-glow 1.5s ease infinite;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--ch-accent), 0 0 40px var(--ch-accent);
+}

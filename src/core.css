@@ -1,0 +1,419 @@
+/* ======================= */
+/* ROOT VARIABLES & RESET  */
+/* ======================= */
+:root {
+    /* Library configuration variables */
+    --ch-duration: 1s;
+    --ch-delay: 0s;
+    --ch-timing: ease;
+    --ch-repeat: infinite;
+    --ch-reveal-color1: #333;
+    --ch-reveal-color2: #222;
+    --ch-gradient-colors: #09f1b8, #00a2ff, #ff00d2, #fed90f;
+    --ch-gradient-size: 300%;
+    --ch-gradient-direction: to right;
+    --ch-accent: #4a6cf7;
+    
+    /* Utility variables */
+    --ch-spacing: 1rem;
+    --ch-border-radius: 8px;
+    --ch-box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* CORE ANIMATIONS (136+)  */
+
+/* Animation Selectors */
+[hover\:ch-fade]:hover { animation: ch-fade var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-grow]:hover { animation: ch-grow var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-shrink]:hover { animation: ch-shrink var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-pulse]:hover { animation: ch-pulse var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite; }
+[hover\:ch-pulse-grow]:hover { animation: ch-pulse-grow var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-pulse-shrink]:hover { animation: ch-pulse-shrink var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-push]:hover { animation: ch-push var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-pop]:hover { animation: ch-pop var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounce-in]:hover { animation: ch-bounce-in var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounce-out]:hover { animation: ch-bounce-out var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotate]:hover { animation: ch-rotate var(--ch-duration, 0.6s) var(--ch-timing, ease-in-out) var(--ch-delay, 0s) infinite; }
+[hover\:ch-rotate-grow]:hover { animation: ch-rotate-grow var(--ch-duration, 0.6s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-float]:hover { animation: ch-float var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-sink]:hover { animation: ch-sink var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-bob]:hover { animation: ch-bob var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-hang]:hover { animation: ch-hang var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite alternate; }
+[hover\:ch-skew]:hover { animation: ch-skew var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-skew-forward]:hover { animation: ch-skew-forward var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-skew-backward]:hover { animation: ch-skew-backward var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-wobble-horizontal]:hover { animation: ch-wobble-horizontal var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-wobble-vertical]:hover { animation: ch-wobble-vertical var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-buzz]:hover { animation: ch-buzz var(--ch-duration, 0.15s) var(--ch-timing, linear) var(--ch-delay, 0s) infinite; }
+[hover\:ch-buzz-out]:hover { animation: ch-buzz-out var(--ch-duration, 0.75s) var(--ch-timing, linear) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-forward]:hover { animation: ch-forward var(--ch-duration, 0.4s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backward]:hover { animation: ch-backward var(--ch-duration, 0.4s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fade-back]:hover { animation: ch-fade-back var(--ch-duration, 0.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-back-pulse]:hover { animation: ch-back-pulse var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) infinite; }
+[hover\:ch-bounce]:hover { animation: ch-bounce var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flash]:hover { animation: ch-flash var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rubberBand]:hover { animation: ch-rubberBand var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-shakeX]:hover { animation: ch-shakeX var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-shakeY]:hover { animation: ch-shakeY var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-headShake]:hover { animation: ch-headShake var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-swing]:hover { transform-origin: top center; animation: ch-swing var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-tada]:hover { animation: ch-tada var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-jello]:hover { animation: ch-jello var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-heartBeat]:hover { animation: ch-heartBeat var(--ch-duration, 1.3s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backInDown]:hover { animation: ch-backInDown var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backInLeft]:hover { animation: ch-backInLeft var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backInRight]:hover { animation: ch-backInRight var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backInUp]:hover { animation: ch-backInUp var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backOutDown]:hover { animation: ch-backOutDown var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backOutLeft]:hover { animation: ch-backOutLeft var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backOutRight]:hover { animation: ch-backOutRight var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-backOutUp]:hover { animation: ch-backOutUp var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceIn]:hover { animation: ch-bounceIn var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceInDown]:hover { animation: ch-bounceInDown var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceInLeft]:hover { animation: ch-bounceInLeft var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceInRight]:hover { animation: ch-bounceInRight var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceInUp]:hover { animation: ch-bounceInUp var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceOut]:hover { animation: ch-bounceOut var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceOutDown]:hover { animation: ch-bounceOutDown var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceOutLeft]:hover { animation: ch-bounceOutLeft var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceOutRight]:hover { animation: ch-bounceOutRight var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-bounceOutUp]:hover { animation: ch-bounceOutUp var(--ch-duration, 0.75s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeIn]:hover { animation: ch-fadeIn var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeInDown]:hover { animation: ch-fadeInDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeInLeft]:hover { animation: ch-fadeInLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeInRight]:hover { animation: ch-fadeInRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeInUp]:hover { animation: ch-fadeInUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeOut]:hover { animation: ch-fadeOut var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeOutDown]:hover { animation: ch-fadeOutDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeOutLeft]:hover { animation: ch-fadeOutLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeOutRight]:hover { animation: ch-fadeOutRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-fadeOutUp]:hover { animation: ch-fadeOutUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flip]:hover { animation: ch-flip var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flipInX]:hover { animation: ch-flipInX var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flipInY]:hover { animation: ch-flipInY var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flipOutX]:hover { animation: ch-flipOutX var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-flipOutY]:hover { animation: ch-flipOutY var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-lightSpeedInRight]:hover { animation: ch-lightSpeedInRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-lightSpeedInLeft]:hover { animation: ch-lightSpeedInLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-lightSpeedOutRight]:hover { animation: ch-lightSpeedOutRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-lightSpeedOutLeft]:hover { animation: ch-lightSpeedOutLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateIn]:hover { animation: ch-rotateIn var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateInDownLeft]:hover { animation: ch-rotateInDownLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateInDownRight]:hover { animation: ch-rotateInDownRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateInUpLeft]:hover { animation: ch-rotateInUpLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateInUpRight]:hover { animation: ch-rotateInUpRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateOut]:hover { animation: ch-rotateOut var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateOutDownLeft]:hover { animation: ch-rotateOutDownLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateOutDownRight]:hover { animation: ch-rotateOutDownRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateOutUpLeft]:hover { animation: ch-rotateOutUpLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rotateOutUpRight]:hover { animation: ch-rotateOutUpRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-hinge]:hover { animation: ch-hinge var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-jackInTheBox]:hover { animation: ch-jackInTheBox var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rollIn]:hover { animation: ch-rollIn var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-rollOut]:hover { animation: ch-rollOut var(--ch-duration, 1s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomIn]:hover { animation: ch-zoomIn var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomInDown]:hover { animation: ch-zoomInDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomInLeft]:hover { animation: ch-zoomInLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomInRight]:hover { animation: ch-zoomInRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomInUp]:hover { animation: ch-zoomInUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomOut]:hover { animation: ch-zoomOut var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomOutDown]:hover { animation: ch-zoomOutDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomOutLeft]:hover { animation: ch-zoomOutLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomOutRight]:hover { animation: ch-zoomOutRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-zoomOutUp]:hover { animation: ch-zoomOutUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideInDown]:hover { animation: ch-slideInDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideInLeft]:hover { animation: ch-slideInLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideInRight]:hover { animation: ch-slideInRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideInUp]:hover { animation: ch-slideInUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideOutDown]:hover { animation: ch-slideOutDown var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideOutLeft]:hover { animation: ch-slideOutLeft var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideOutRight]:hover { animation: ch-slideOutRight var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+[hover\:ch-slideOutUp]:hover { animation: ch-slideOutUp var(--ch-duration, 0.5s) var(--ch-timing, ease) var(--ch-delay, 0s) var(--ch-repeat, 1); }
+
+/* Keyframes for all animations */
+@keyframes ch-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ch-grow { to { transform: scale(1.1); } }
+@keyframes ch-shrink { to { transform: scale(0.9); } }
+@keyframes ch-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes ch-pulse-grow { to { transform: scale(1.1); } }
+@keyframes ch-pulse-shrink { to { transform: scale(0.95); } }
+@keyframes ch-push { 50% { transform: scale(0.8); } }
+@keyframes ch-pop { 50% { transform: scale(1.2); } }
+@keyframes ch-bounce-in { 
+  0% { opacity: 0; transform: scale(0.3); } 
+  50% { opacity: 1; transform: scale(1.05); } 
+  70% { transform: scale(0.9); } 
+  100% { transform: scale(1); } 
+}
+@keyframes ch-bounce-out { 
+  0% { transform: scale(1); } 
+  25% { transform: scale(0.95); } 
+  50% { opacity: 1; transform: scale(1.1); } 
+  100% { opacity: 0; transform: scale(0.3); } 
+}
+@keyframes ch-rotate { to { transform: rotate(360deg); } }
+@keyframes ch-rotate-grow { to { transform: rotate(360deg) scale(1.2); } }
+@keyframes ch-float { to { transform: translateY(-5px); } }
+@keyframes ch-sink { to { transform: translateY(5px); } }
+@keyframes ch-bob { 0% { transform: translateY(-5px); } 100% { transform: translateY(5px); } }
+@keyframes ch-hang { 0% { transform: translateY(5px); } 100% { transform: translateY(-5px); } }
+@keyframes ch-skew { to { transform: skew(10deg); } }
+@keyframes ch-skew-forward { 0% { transform: skew(0deg); } 100% { transform: skew(10deg) scale(1.1); } }
+@keyframes ch-skew-backward { 0% { transform: skew(0deg); } 100% { transform: skew(-10deg) scale(1.1); } }
+@keyframes ch-wobble-horizontal {
+  0%,100% { transform: translateX(0%); }
+  15% { transform: translateX(-5px) rotate(-5deg); }
+  30% { transform: translateX(3px) rotate(3deg); }
+  45% { transform: translateX(-3px) rotate(-3deg); }
+  60% { transform: translateX(2px) rotate(2deg); }
+  75% { transform: translateX(-1px) rotate(-1deg); }
+}
+@keyframes ch-wobble-vertical {
+  0%,100% { transform: translateY(0%); }
+  15% { transform: translateY(-5px) rotate(-5deg); }
+  30% { transform: translateY(3px) rotate(3deg); }
+  45% { transform: translateY(-3px) rotate(-3deg); }
+  60% { transform: translateY(2px) rotate(2deg); }
+  75% { transform: translateY(-1px) rotate(-1deg); }
+}
+@keyframes ch-buzz { 50% { transform: translateX(3px) rotate(2deg); } }
+@keyframes ch-buzz-out {
+  10% { transform: translateX(3px) rotate(2deg); }
+  20% { transform: translateX(-3px) rotate(-2deg); }
+  30% { transform: translateX(3px) rotate(2deg); }
+  40% { transform: translateX(-3px) rotate(-2deg); }
+  50% { transform: translateX(2px) rotate(1deg); }
+  60% { transform: translateX(-2px) rotate(-1deg); }
+  70% { transform: translateX(2px) rotate(1deg); }
+  80% { transform: translateX(-2px) rotate(-1deg); }
+  90% { transform: translateX(1px) rotate(0deg); }
+  100% { transform: translateX(-1px) rotate(0deg); }
+}
+@keyframes ch-forward { to { transform: translateX(5px); } }
+@keyframes ch-backward { to { transform: translateX(-5px); } }
+@keyframes ch-fade-back { to { background-color: rgba(0,0,0,0.1); } }
+@keyframes ch-back-pulse {
+  0% { background-color: rgba(0,0,0,0.1); }
+  50% { background-color: rgba(0,0,0,0.3); }
+  100% { background-color: rgba(0,0,0,0.1); }
+}
+@keyframes ch-bounce {
+  0%,20%,50%,80%,100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+@keyframes ch-flash {
+  0%,50%,100% { opacity: 1; }
+  25%,75% { opacity: 0; }
+}
+@keyframes ch-rubberBand {
+  0% { transform: scale(1); }
+  30% { transform: scaleX(1.25) scaleY(0.75); }
+  40% { transform: scaleX(0.75) scaleY(1.25); }
+  60% { transform: scaleX(1.15) scaleY(0.85); }
+  100% { transform: scale(1); }
+}
+@keyframes ch-shakeX {
+  0%,100% { transform: translateX(0); }
+  10%,30%,50%,70%,90% { transform: translateX(-5px); }
+  20%,40%,60%,80% { transform: translateX(5px); }
+}
+@keyframes ch-shakeY {
+  0%,100% { transform: translateY(0); }
+  10%,30%,50%,70%,90% { transform: translateY(-5px); }
+  20%,40%,60%,80% { transform: translateY(5px); }
+}
+@keyframes ch-headShake {
+  0% { transform: translateX(0); }
+  6.5% { transform: translateX(-5px) rotateY(-9deg); }
+  18.5% { transform: translateX(4px) rotateY(7deg); }
+  31.5% { transform: translateX(-3px) rotateY(-5deg); }
+  43.5% { transform: translateX(2px) rotateY(3deg); }
+  50% { transform: translateX(0); }
+}
+@keyframes ch-swing {
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+@keyframes ch-tada {
+  0% { transform: scale(1); }
+  10%,20% { transform: scale(0.9) rotate(-3deg); }
+  30%,50%,70%,90% { transform: scale(1.1) rotate(3deg); }
+  40%,60%,80% { transform: scale(1.1) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes ch-jello {
+  0%,11.1%,100% { transform: translateZ(0); }
+  22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+@keyframes ch-heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+@keyframes ch-backInDown {
+  0% { transform: translateY(-1000px) scaleY(2.5) scaleX(0.2); opacity: 0.7; }
+  80% { transform: translateY(0px) scaleY(0.9) scaleX(1); opacity: 0.7; }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+@keyframes ch-backInLeft {
+  0% { transform: translateX(-2000px) scaleX(2.5) scaleY(0.2); opacity: 0.7; }
+  80% { transform: translateX(0px) scaleX(0.9) scaleY(0.9); opacity: 0.7; }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+@keyframes ch-backInRight {
+  0% { transform: translateX(2000px) scaleX(2.5) scaleY(0.2); opacity: 0.7; }
+  80% { transform: translateX(0px) scaleX(0.9) scaleY(0.9); opacity: 0.7; }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+@keyframes ch-backInUp {
+  0% { transform: translateY(1000px) scaleY(2.5) scaleX(0.2); opacity: 0.7; }
+  80% { transform: translateY(0px) scaleY(0.9) scaleX(0.9); opacity: 0.7; }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+}
+@keyframes ch-backOutDown {
+  0% { transform: scale(1); opacity: 1; }
+  20% { transform: translateY(0px) scaleY(0.9) scaleX(1); opacity: 0.7; }
+  100% { transform: translateY(1000px) scaleY(2.5) scaleX(0.2); opacity: 0.7; }
+}
+@keyframes ch-backOutLeft {
+  0% { transform: scale(1); opacity: 1; }
+  20% { transform: translateX(0px) scaleX(0.9) scaleY(0.9); opacity: 0.7; }
+  100% { transform: translateX(-2000px) scaleX(2.5) scaleY(0.2); opacity: 0.7; }
+}
+@keyframes ch-backOutRight {
+  0% { transform: scale(1); opacity: 1; }
+  20% { transform: translateX(0px) scaleX(0.9) scaleY(0.9); opacity: 0.7; }
+  100% { transform: translateX(2000px) scaleX(2.5) scaleY(0.2); opacity: 0.7; }
+}
+@keyframes ch-backOutUp {
+  0% { transform: scale(1); opacity: 1; }
+  20% { transform: translateY(0px) scaleY(0.9) scaleX(0.9); opacity: 0.7; }
+  100% { transform: translateY(-1000px) scaleY(2.5) scaleX(0.2); opacity: 0.7; }
+}
+@keyframes ch-bounceIn {
+  0%,20%,40%,60%,80%,100% { transition-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+  0% { opacity: 0; transform: scale3d(0.3,0.3,0.3); }
+  20% { transform: scale3d(1.1,1.1,1.1); }
+  40% { transform: scale3d(0.9,0.9,0.9); }
+  60% { opacity: 1; transform: scale3d(1.03,1.03,1.03); }
+  80% { transform: scale3d(0.97,0.97,0.97); }
+  100% { opacity: 1; transform: scale3d(1,1,1); }
+}
+@keyframes ch-bounceInDown {
+  0%,60%,75%,90%,100% { transition-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+  0% { opacity: 0; transform: translate3d(0,-3000px,0); }
+  60% { opacity: 1; transform: translate3d(0,25px,0); }
+  75% { transform: translate3d(0,-10px,0); }
+  90% { transform: translate3d(0,5px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes ch-bounceInLeft {
+  0%,60%,75%,90%,100% { transition-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+  0% { opacity: 0; transform: translate3d(-3000px,0,0); }
+  60% { opacity: 1; transform: translate3d(25px,0,0); }
+  75% { transform: translate3d(-10px,0,0); }
+  90% { transform: translate3d(5px,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes ch-bounceInRight {
+  0%,60%,75%,90%,100% { transition-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+  0% { opacity: 0; transform: translate3d(3000px,0,0); }
+  60% { opacity: 1; transform: translate3d(-25px,0,0); }
+  75% { transform: translate3d(10px,0,0); }
+  90% { transform: translate3d(-5px,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes ch-bounceInUp {
+  0%,60%,75%,90%,100% { transition-timing-function: cubic-bezier(0.215,0.61,0.355,1); }
+  0% { opacity: 0; transform: translate3d(0,3000px,0); }
+  60% { opacity: 1; transform: translate3d(0,-20px,0); }
+  75% { transform: translate3d(0,10px,0); }
+  90% { transform: translate3d(0,-5px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+@keyframes ch-bounceOut {
+  20% { transform: scale3d(0.9,0.9,0.9); }
+  50%,55% { opacity: 1; transform: scale3d(1.1,1.1,1.1); }
+  100% { opacity: 0; transform: scale3d(0.3,0.3,0.3); }
+}
+@keyframes ch-bounceOutDown {
+  20% { transform: translate3d(0,10px,0); }
+  40%,45% { opacity: 1; transform: translate3d(0,-20px,0); }
+  100% { opacity: 0; transform: translate3d(0,2000px,0); }
+}
+@keyframes ch-bounceOutLeft {
+  20% { opacity: 1; transform: translate3d(20px,0,0); }
+  100% { opacity: 0; transform: translate3d(-2000px,0,0); }
+}
+@keyframes ch-bounceOutRight {
+  20% { opacity: 1; transform: translate3d(-20px,0,0); }
+  100% { opacity: 0; transform: translate3d(2000px,0,0); }
+}
+@keyframes ch-bounceOutUp {
+  20% { transform: translate3d(0,-10px,0); }
+  40%,45% { opacity: 1; transform: translate3d(0,20px,0); }
+  100% { opacity: 0; transform: translate3d(0,-2000px,0); }
+}
+@keyframes ch-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ch-fadeInDown { from { opacity: 0; transform: translate3d(0,-20px,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@keyframes ch-fadeInLeft { from { opacity: 0; transform: translate3d(-20px,0,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@keyframes ch-fadeInRight { from { opacity: 0; transform: translate3d(20px,0,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@keyframes ch-fadeInUp { from { opacity: 0; transform: translate3d(0,20px,0); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@keyframes ch-fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes ch-fadeOutDown { from { opacity: 1; } to { opacity: 0; transform: translate3d(0,20px,0); } }
+@keyframes ch-fadeOutLeft { from { opacity: 1; } to { opacity: 0; transform: translate3d(-20px,0,0); } }
+@keyframes ch-fadeOutRight { from { opacity: 1; } to { opacity: 0; transform: translate3d(20px,0,0); } }
+@keyframes ch-fadeOutUp { from { opacity: 1; } to { opacity: 0; transform: translate3d(0,-20px,0); } }
+@keyframes ch-flip { from { transform: perspective(400px) rotate3d(0,1,0,-360deg); animation-timing-function: ease-out; } 40% { transform: perspective(400px) translate3d(0,0,150px) rotate3d(0,1,0,-190deg); } 50% { transform: perspective(400px) translate3d(0,0,150px) rotate3d(0,1,0,-170deg); } to { transform: perspective(400px); } }
+@keyframes ch-flipInX { from { transform: perspective(400px) rotate3d(1,0,0,90deg); opacity: 0; } 40% { transform: perspective(400px) rotate3d(1,0,0,-20deg); } 60% { transform: perspective(400px) rotate3d(1,0,0,10deg); opacity: 1; } 80% { transform: perspective(400px) rotate3d(1,0,0,-5deg); } to { transform: perspective(400px); } }
+@keyframes ch-flipInY { from { transform: perspective(400px) rotate3d(0,1,0,90deg); opacity: 0; } 40% { transform: perspective(400px) rotate3d(0,1,0,-20deg); } 60% { transform: perspective(400px) rotate3d(0,1,0,10deg); opacity: 1; } 80% { transform: perspective(400px) rotate3d(0,1,0,-5deg); } to { transform: perspective(400px); } }
+@keyframes ch-flipOutX { from { transform: perspective(400px); } 30% { transform: perspective(400px) rotate3d(1,0,0,-20deg); opacity: 1; } to { transform: perspective(400px) rotate3d(1,0,0,90deg); opacity: 0; } }
+@keyframes ch-flipOutY { from { transform: perspective(400px); } 30% { transform: perspective(400px) rotate3d(0,1,0,-15deg); opacity: 1; } to { transform: perspective(400px) rotate3d(0,1,0,90deg); opacity: 0; } }
+@keyframes ch-lightSpeedInRight { from { transform: translate3d(100%,0,0) skewX(-30deg); opacity: 0; } 60% { transform: skewX(20deg); opacity: 1; } 80% { transform: skewX(-5deg); } to { transform: translate3d(0,0,0); } }
+@keyframes ch-lightSpeedInLeft { from { transform: translate3d(-100%,0,0) skewX(30deg); opacity: 0; } 60% { transform: skewX(-20deg); opacity: 1; } 80% { transform: skewX(5deg); } to { transform: translate3d(0,0,0); } }
+@keyframes ch-lightSpeedOutRight { from { opacity: 1; } to { transform: translate3d(100%,0,0) skewX(30deg); opacity: 0; } }
+@keyframes ch-lightSpeedOutLeft { from { opacity: 1; } to { transform: translate3d(-100%,0,0) skewX(-30deg); opacity: 0; } }
+@keyframes ch-rotateIn { from { transform: rotate3d(0,0,1,-200deg); opacity: 0; } to { transform: translate3d(0,0,0); opacity: 1; } }
+@keyframes ch-rotateInDownLeft { from { transform: rotate3d(0,0,1,-45deg); opacity: 0; } to { transform: translate3d(0,0,0); opacity: 1; } }
+@keyframes ch-rotateInDownRight { from { transform: rotate3d(0,0,1,45deg); opacity: 0; } to { transform: translate3d(0,0,0); opacity: 1; } }
+@keyframes ch-rotateInUpLeft { from { transform: rotate3d(0,0,1,45deg); opacity: 0; } to { transform: translate3d(0,0,0); opacity: 1; } }
+@keyframes ch-rotateInUpRight { from { transform: rotate3d(0,0,1,-90deg); opacity: 0; } to { transform: translate3d(0,0,0); opacity: 1; } }
+@keyframes ch-rotateOut { from { opacity: 1; } to { transform: rotate3d(0,0,1,200deg); opacity: 0; } }
+@keyframes ch-rotateOutDownLeft { from { opacity: 1; } to { transform: rotate3d(0,0,1,45deg); opacity: 0; } }
+@keyframes ch-rotateOutDownRight { from { opacity: 1; } to { transform: rotate3d(0,0,1,-45deg); opacity: 0; } }
+@keyframes ch-rotateOutUpLeft { from { opacity: 1; } to { transform: rotate3d(0,0,1,-45deg); opacity: 0; } }
+@keyframes ch-rotateOutUpRight { from { opacity: 1; } to { transform: rotate3d(0,0,1,90deg); opacity: 0; } }
+@keyframes ch-hinge { 0% { transform: rotate(0); transform-origin: top left; } 20%,60% { transform: rotate(80deg); } 40% { transform: rotate(60deg); } 80% { transform: rotate(60deg) translateY(0); opacity: 1; } 100% { transform: translateY(700px); opacity: 0; } }
+@keyframes ch-jackInTheBox { from { opacity: 0; transform: scale(0.1) rotate(30deg); transform-origin: center bottom; } 50% { transform: rotate(-10deg); } 70% { transform: rotate(3deg); } to { opacity: 1; transform: scale(1); } }
+@keyframes ch-rollIn { from { opacity: 0; transform: translate3d(-100%,0,0) rotate3d(0,0,1,-120deg); } to { opacity: 1; transform: translate3d(0,0,0); } }
+@keyframes ch-rollOut { from { opacity: 1; } to { opacity: 0; transform: translate3d(100%,0,0) rotate3d(0,0,1,120deg); } }
+@keyframes ch-zoomIn { from { opacity: 0; transform: scale3d(0.3,0.3,0.3); } 50% { opacity: 1; } }
+@keyframes ch-zoomInDown { from { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(0,-1000px,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } 60% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(0,60px,0); animation-timing-function: cubic-bezier(0.175,0.885,0.32,1); } }
+@keyframes ch-zoomInLeft { from { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(-1000px,0,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } 60% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(10px,0,0); animation-timing-function: cubic-bezier(0.175,0.885,0.32,1); } }
+@keyframes ch-zoomInRight { from { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(1000px,0,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } 60% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(-10px,0,0); animation-timing-function: cubic-bezier(0.175,0.885,0.32,1); } }
+@keyframes ch-zoomInUp { from { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(0,1000px,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } 60% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(0,-60px,0); animation-timing-function: cubic-bezier(0.175,0.885,0.32,1); } }
+@keyframes ch-zoomOut { from { opacity: 1; } 50% { opacity: 0; transform: scale3d(0.3,0.3,0.3); } to { opacity: 0; } }
+@keyframes ch-zoomOutDown { 40% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(0,-60px,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } to { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(0,2000px,0); } }
+@keyframes ch-zoomOutLeft { 40% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(42px,0,0); } to { opacity: 0; transform: scale(0.1) translate3d(-2000px,0,0); } }
+@keyframes ch-zoomOutRight { 40% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(-42px,0,0); } to { opacity: 0; transform: scale(0.1) translate3d(2000px,0,0); } }
+@keyframes ch-zoomOutUp { 40% { opacity: 1; transform: scale3d(0.475,0.475,0.475) translate3d(0,60px,0); animation-timing-function: cubic-bezier(0.55,0.055,0.675,0.19); } to { opacity: 0; transform: scale3d(0.1,0.1,0.1) translate3d(0,-2000px,0); } }
+@keyframes ch-slideInDown { from { transform: translate3d(0,-100%,0); visibility: visible; } to { transform: translate3d(0,0,0); } }
+@keyframes ch-slideInLeft { from { transform: translate3d(-100%,0,0); visibility: visible; } to { transform: translate3d(0,0,0); } }
+@keyframes ch-slideInRight { from { transform: translate3d(100%,0,0); visibility: visible; } to { transform: translate3d(0,0,0); } }
+@keyframes ch-slideInUp { from { transform: translate3d(0,100%,0); visibility: visible; } to { transform: translate3d(0,0,0); } }
+@keyframes ch-slideOutDown { from { transform: translate3d(0,0,0); } to { transform: translate3d(0,100%,0); visibility: hidden; } }
+@keyframes ch-slideOutLeft { from { transform: translate3d(0,0,0); } to { transform: translate3d(-100%,0,0); visibility: hidden; } }
+@keyframes ch-slideOutRight { from { transform: translate3d(0,0,0); } to { transform: translate3d(100%,0,0); visibility: hidden; } }
+@keyframes ch-slideOutUp { from { transform: translate3d(0,0,0); } to { transform: translate3d(0,-100%,0); visibility: hidden; } }
