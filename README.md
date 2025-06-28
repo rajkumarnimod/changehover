@@ -115,8 +115,8 @@ ChangeHover delivers flawless hover animations across all modern browsers with p
 
 ## 📚 Documentation & Links
 
-- **Documentation:** <https://changealert.netlify.app/>
-- **GitHub:** <https://github.com/rajkumarnimod/changealert>
+- **Documentation:** <https://changehover.netlify.app/>
+- **GitHub:** <https://github.com/rajkumarnimod/changehover>
 - **LinkedIn:** <https://www.linkedin.com/in/rajkumar-nimod>
 
 ---
