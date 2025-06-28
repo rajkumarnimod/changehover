@@ -195,7 +195,7 @@ header {
         linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%, transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%, transparent);
     background-size: 55px 55px;
     color: white;
-    padding: 100px 0 140px 0;
+    padding: 50px 0 100px 0;
     position: relative;
     overflow: hidden;
 }
@@ -207,7 +207,7 @@ header {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-bottom: 1.5rem;
     line-height: 1.1;
 }
@@ -343,7 +343,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, #87c9e8, #f0d86b);
+    background: linear-gradient(45deg, #e748ec, #f2d75e);
     position: relative;
     overflow: hidden;
 }
@@ -738,4 +738,10 @@ footer {
 
 .github{
 font-size: 34px;
+}
+
+.footicon{
+    font-size: 28px;
+    margin-right: 12px;
+    color: #fff;
 }

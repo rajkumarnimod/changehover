@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation - ChangeHover Animation Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="src/changehover.css" />
+    <style>
+      /* Reuse existing styles and add docs-specific styles */
+      .docs-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .docs-nav {
+        list-style: none;
+      }
+
+      .docs-nav li {
+        margin-bottom: 8px;
+      }
+
+      .docs-nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: block;
+        padding: 8px 12px;
+        border-radius: 6px;
+      }
+
+      .docs-nav a:hover,
+      .docs-nav a.active {
+        color: var(--primary);
+        background: rgba(74, 108, 247, 0.1);
+      }
+
+      .docs-content {
+        padding-bottom: 40px;
+      }
+
+      .docs-section {
+        margin-bottom: 10px;
+        scroll-margin-top: 20px;
+      }
+
+      .docs-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .docs-section h2:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: var(--primary);
+        border-radius: 2px;
+      }
+
+      .docs-section h3 {
+        font-size: 1.5rem;
+        margin: 30px 0 15px 0;
+        color: var(--primary);
+      }
+
+      .docs-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: var(--shadow-sm);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+      }
+
+      .docs-table th {
+        background: var(--primary);
+        color: white;
+        text-align: left;
+        padding: 12px 15px;
+      }
+
+      .docs-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .docs-table tr:nth-child(even) {
+        background: #f8f9ff;
+      }
+
+      .docs-table tr:hover {
+        background: rgba(74, 108, 247, 0.05);
+      }
+
+      .props-table code {
+        background: rgba(74, 108, 247, 0.1);
+        color: var(--primary);
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+
+      .example-container {
+        margin-bottom: 2rem;
+      }
+
+      .example-preview {
+        padding: 30px;
+        display: flex;
+        background-color: rgb(191, 216, 240);
+        justify-content: center;
+        align-items: center;
+        min-height: 150px;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .example-code {
+        padding: 20px;
+        background: rgb(65, 65, 65);
+        overflow-x: auto;
+      }
+
+      .example-code pre {
+        margin: 0;
+        font-family: monospace;
+        color: #fff;
+        white-space: nowrap; /* 🔥 Prevents wrapping so scroll appears */
+      }
+
+      .demo-box {
+        background-color: rgb(175, 175, 249);
+        padding: 15px ;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .docs-container {
+          grid-template-columns: 1fr;
+        }
+
+        .docs-sidebar {
+          position: static;
+          height: auto;
+          margin-bottom: 40px;
+        }
+      }
+
+      .animation-class-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+      }
+      .animation-class-list li {
+        flex: 0 0 calc(270px - 1rem); /* 4 items per row with spacing */
+        background: linear-gradient(rgb(239, 211, 245), rgb(238, 203, 242));
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 14px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      .animation-class-list li:hover {
+        background: #e0fbf8;
+      }
+
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="topb"></div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo"> <i class="fas fa-bolt"></i> ChangeHover </a>
+          <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <div class="nav-links" id="nav-links">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#showcase">Animations</a>
+            <a href="index.html#install">Installation</a>
+            <a href="index.html#examples">Examples</a>
+            <a href="Documentation.html">Documentation</a>
+            <a href="https://github.com/rajkumarnimod/changehover" target="_blank" title="View on GitHub">
+              <i class="fab fa-github github"></i>
+            </a>
+            <a href="#install" class="btn btn-small">Get Started</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="heading">ChangeHover Documentation</h1>
+          <p>
+            Everything you need to know to implement and customize our 150+ CSS hover animations.
+          </p>
+          <div class="hero-btns">
+            <a href="#getting-started" class="btn">Get Started</a>
+            <a href="#animation-gallery" class="btn btn-secondary">Animation Gallery</a>
+          </div>
+        </div>
+        <div class="hero-demo">
+          <div hover:ch-rotate class="demo-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Content -->
+    <section id="documentation" style="padding: 60px 0">
+      <div class="docs-container">
+        <!-- Sidebar Navigation -->
+
+        <!-- Main Content -->
+        <main class="docs-content">
+          <!-- Installation Section -->
+          <section id="installation" class="docs-section">
+            <h2>Installation</h2>
+            <p>Add ChangeHover to your project with these simple methods:</p>
+
+            <h3>CDN Links</h3>
+
+            <!-- Full Bundle -->
+            <div class="example-container">
+              <p>
+                <strong>Full Library:</strong> All animations in one file (core
+                + border + text)
+              </p>
+              <div class="example-code">
+                <pre>
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changehover/dist/changehover.min.css"&gt;</pre
+                >
+              </div>
+            </div>
+
+            <!-- Core Animations -->
+            <div class="example-container">
+              <p>
+                <strong>Core Only:</strong> Include fade, grow, pulse, bounce,
+                etc. (94 + Animations)
+              </p>
+              <div class="example-code">
+                <pre>
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changehover/dist/core.min.css"&gt;</pre
+                >
+              </div>
+            </div>
+
+            <!-- Border Effects -->
+            <div class="example-container">
+              <p>
+                <strong>Border Effects:</strong> Animated borders like full,
+                gradient, dashed, etc.(9+ Animations)
+              </p>
+              <div class="example-code">
+                <pre>
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changehover/dist/borders.min.css"&gt;</pre
+                >
+              </div>
+            </div>
+
+            <!-- Text Effects -->
+            <div class="example-container">
+              <p>
+                <strong>Text Effects:</strong> Animate text with wave, glitch,
+                neon, reveal, etc.(19+ Animations)
+              </p>
+              <div class="example-code">
+                <pre>
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changehover/dist/text.min.css"&gt;</pre
+                >
+              </div>
+            </div>
+
+            <h3>Download Manually</h3>
+            <p>Download the CSS file and include it in your project:</p>
+            <div class="example-container">
+              <div class="example-code">
+                <pre>
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rajkumarnimod/changehover/dist/changehover.min.css"&gt;</pre
+                >
+              </div>
+            </div>
+          </section>
+
+          <!-- Basic Usage Section -->
+          <section id="basic-usage" class="docs-section">
+            <h2>Basic Usage</h2>
+            <h3>Available Animation Classes</h3>
+            <p>
+              ChangeHover provides 150+ animation classes across several
+              categories:
+            </p>
+            <ul>
+              <li>
+                <strong>Core:</strong> ch-fade, ch-grow, ch-shrink, ch-pulse,
+                etc.
+              </li>
+              <li>
+                <strong>Text:</strong> ch-text-gradient, ch-text-wave,
+                ch-text-glitch, etc.
+              </li>
+              <li>
+                <strong>Background:</strong> ch-bg-ltr, ch-bg-radial,
+                ch-bg-gradient, etc.
+              </li>
+              <li>
+                <strong>Border:</strong> ch-border-ltr, ch-border-wave,
+                ch-border-dashed, etc.
+              </li>
+            </ul>
+            <div
+              style="
+                background-color: rgb(240, 247, 192);
+                margin: 20px 0;
+                padding: 5px;
+              "
+            >
+              <h4>How to Apply Animations</h4>
+              <p>
+                Apply animations by adding
+                <span style="color: rgb(0, 64, 255)">hover:</span> attributes to
+                your HTML elements:
+              </p>
+            </div>
+
+            <h3><i class="fas fa-bolt"></i> Core Animations</h3>
+
+            <div class="example-container">
+              <div class="example-preview">
+                <div class="demo-box" hover:ch-bounce>Hover Me</div>
+              </div>
+              <div class="example-code">
+                <pre>
+&lt;div hover:ch-bounce&gt;
+  Hover Me
+&lt;/div&gt;</pre
+                >
+              </div>
+            </div>
+            <h4 style="margin-bottom: 15px">All Core Animations : -</h4>
+            <div>
+            <ul class="animation-class-list">
+  <li><code>hover:ch-fade</code></li>
+  <li><code>hover:ch-grow</code></li>
+  <li><code>hover:ch-shrink</code></li>
+  <li><code>hover:ch-pulse</code></li>
+  <li><code>hover:ch-pulse-grow</code></li>
+  <li><code>hover:ch-pulse-shrink</code></li>
+  <li><code>hover:ch-push</code></li>
+  <li><code>hover:ch-pop</code></li>
+  <li><code>hover:ch-bounce-in</code></li>
+  <li><code>hover:ch-bounce-out</code></li>
+  <li><code>hover:ch-rotate</code></li>
+  <li><code>hover:ch-rotate-grow</code></li>
+  <li><code>hover:ch-float</code></li>
+  <li><code>hover:ch-sink</code></li>
+  <li><code>hover:ch-bob</code></li>
+  <li><code>hover:ch-hang</code></li>
+  <li><code>hover:ch-skew</code></li>
+  <li><code>hover:ch-skew-forward</code></li>
+  <li><code>hover:ch-skew-backward</code></li>
+  <li><code>hover:ch-wobble-horizontal</code></li>
+  <li><code>hover:ch-wobble-vertical</code></li>
+  <li><code>hover:ch-buzz</code></li>
+  <li><code>hover:ch-buzz-out</code></li>
+  <li><code>hover:ch-forward</code></li>
+  <li><code>hover:ch-backward</code></li>
+  <li><code>hover:ch-fade-back</code></li>
+  <li><code>hover:ch-back-pulse</code></li>
+  <li><code>hover:ch-bounce</code></li>
+  <li><code>hover:ch-flash</code></li>
+  <li><code>hover:ch-rubberBand</code></li>
+  <li><code>hover:ch-shakeX</code></li>
+  <li><code>hover:ch-shakeY</code></li>
+  <li><code>hover:ch-headShake</code></li>
+  <li><code>hover:ch-swing</code></li>
+  <li><code>hover:ch-tada</code></li>
+  <li><code>hover:ch-jello</code></li>
+  <li><code>hover:ch-heartBeat</code></li>
+  <li><code>hover:ch-backInDown</code></li>
+  <li><code>hover:ch-backInLeft</code></li>
+  <li><code>hover:ch-backInRight</code></li>
+  <li><code>hover:ch-backInUp</code></li>
+  <li><code>hover:ch-backOutDown</code></li>
+  <li><code>hover:ch-backOutLeft</code></li>
+  <li><code>hover:ch-backOutRight</code></li>
+  <li><code>hover:ch-backOutUp</code></li>
+  <li><code>hover:ch-bounceIn</code></li>
+  <li><code>hover:ch-bounceInDown</code></li>
+  <li><code>hover:ch-bounceInLeft</code></li>
+  <li><code>hover:ch-bounceInRight</code></li>
+  <li><code>hover:ch-bounceInUp</code></li>
+  <li><code>hover:ch-bounceOut</code></li>
+  <li><code>hover:ch-bounceOutDown</code></li>
+  <li><code>hover:ch-bounceOutLeft</code></li>
+  <li><code>hover:ch-bounceOutRight</code></li>
+  <li><code>hover:ch-bounceOutUp</code></li>
+  <li><code>hover:ch-fadeIn</code></li>
+  <li><code>hover:ch-fadeInDown</code></li>
+  <li><code>hover:ch-fadeInLeft</code></li>
+  <li><code>hover:ch-fadeInRight</code></li>
+  <li><code>hover:ch-fadeInUp</code></li>
+  <li><code>hover:ch-fadeOut</code></li>
+  <li><code>hover:ch-fadeOutDown</code></li>
+  <li><code>hover:ch-fadeOutLeft</code></li>
+  <li><code>hover:ch-fadeOutRight</code></li>
+  <li><code>hover:ch-fadeOutUp</code></li>
+  <li><code>hover:ch-flip</code></li>
+  <li><code>hover:ch-flipInX</code></li>
+  <li><code>hover:ch-flipInY</code></li>
+  <li><code>hover:ch-flipOutX</code></li>
+  <li><code>hover:ch-flipOutY</code></li>
+  <li><code>hover:ch-lightSpeedInRight</code></li>
+  <li><code>hover:ch-lightSpeedInLeft</code></li>
+  <li><code>hover:ch-lightSpeedOutRight</code></li>
+  <li><code>hover:ch-lightSpeedOutLeft</code></li>
+  <li><code>hover:ch-rotateIn</code></li>
+  <li><code>hover:ch-rotateInDownLeft</code></li>
+  <li><code>hover:ch-rotateInDownRight</code></li>
+  <li><code>hover:ch-rotateInUpLeft</code></li>
+  <li><code>hover:ch-rotateInUpRight</code></li>
+  <li><code>hover:ch-rotateOut</code></li>
+  <li><code>hover:ch-rotateOutDownLeft</code></li>
+  <li><code>hover:ch-rotateOutDownRight</code></li>
+  <li><code>hover:ch-rotateOutUpLeft</code></li>
+  <li><code>hover:ch-rotateOutUpRight</code></li>
+  <li><code>hover:ch-hinge</code></li>
+  <li><code>hover:ch-jackInTheBox</code></li>
+  <li><code>hover:ch-rollIn</code></li>
+  <li><code>hover:ch-rollOut</code></li>
+  <li><code>hover:ch-zoomIn</code></li>
+  <li><code>hover:ch-zoomInDown</code></li>
+  <li><code>hover:ch-zoomInLeft</code></li>
+  <li><code>hover:ch-zoomInRight</code></li>
+  <li><code>hover:ch-zoomInUp</code></li>
+  <li><code>hover:ch-zoomOut</code></li>
+  <li><code>hover:ch-zoomOutDown</code></li>
+  <li><code>hover:ch-zoomOutLeft</code></li>
+  <li><code>hover:ch-zoomOutRight</code></li>
+  <li><code>hover:ch-zoomOutUp</code></li>
+  <li><code>hover:ch-slideInDown</code></li>
+  <li><code>hover:ch-slideInLeft</code></li>
+  <li><code>hover:ch-slideInRight</code></li>
+  <li><code>hover:ch-slideInUp</code></li>
+  <li><code>hover:ch-slideOutDown</code></li>
+  <li><code>hover:ch-slideOutLeft</code></li>
+  <li><code>hover:ch-slideOutRight</code></li>
+  <li><code>hover:ch-slideOutUp</code></li>
+</ul>
+
+            </div>
+          </section>
+
+          <!-- Customization Section -->
+          <section id="customization" class="docs-section">
+            <h3><i class="fas fa-font"></i> Text Animations</h3>
+
+            <div class="example-container">
+              <div class="example-preview">
+                <div
+                  class="demo-box"
+                  hover:ch-text-gradient-flow
+                  hover:ch-text-bounce
+                >
+                  Hover Me
+                </div>
+              </div>
+              <div class="example-code">
+                <pre>
+&lt;div hover:ch-text-gradient-flow hover:ch-text-bounce&gt;
+  Hover Me
+&lt;/div&gt;</pre
+                >
+              </div>
+            </div>
+            <h4 style="margin-bottom: 15px">All Text Animations : -</h4>
+            <div>
+            <ul class="animation-class-list">
+  <li><code>hover:ch-text-gradient-flow</code></li>
+  <li><code>hover:ch-text-glitch</code></li>
+  <li><code>hover:ch-text-neon</code></li>
+  <li><code>hover:ch-text-bounce</code></li>
+  <li><code>hover:ch-text-wave</code></li>
+  <li><code>hover:ch-text-rotate3d</code></li>
+  <li><code>hover:ch-text-fade-in</code></li>
+  <li><code>hover:ch-text-slide-in</code></li>
+  <li><code>hover:ch-text-zoom-in</code></li>
+  <li><code>hover:ch-text-shake</code></li>
+  <li><code>hover:ch-text-pulse</code></li>
+  <li><code>hover:ch-text-wobble</code></li>
+  <li><code>hover:ch-text-blink</code></li>
+  <li><code>hover:ch-text-swing</code></li>
+  <li><code>hover:ch-text-jelly</code></li>
+  <li><code>hover:ch-text-skew</code></li>
+  <li><code>hover:ch-text-fly-in</code></li>
+  <li><code>hover:ch-text-reveal</code></li>
+</ul>
+
+            </div>
+          </section>
+
+          <!-- Customization Section -->
+          <section id="customization" class="docs-section">
+            <h3><i class="fas fa-border-style"></i> Border Animations</h3>
+
+            <div class="example-container">
+              <div class="example-preview">
+                <div class="demo-box" hover:ch-border-ltr>
+                  <span class="ch-animation-helper"></span>
+                  Hover Me
+                </div>
+              </div>
+              <div class="example-code">
+                <pre>
+&lt;div hover:ch-border-ltr&gt; <br>
+&lt;span class="ch-animation-helper"&gt; &lt;/span&gt; <br>
+  Hover Me <br>
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+            <h4 style="margin-bottom: 15px">All Border Animations : -</h4>
+            <div>
+              <ul class="animation-class-list">
+                <li><code>hover:ch-border-ltr</code></li>
+                <li> <code>hover:ch-border-rtl</code></li>
+                <li> <code>hover:ch-border-ttb</code></li>
+                <li><code>hover:ch-border-btt</code></li>
+                <li> <code>hover:ch-border-dashed</code></li>
+                <li> <code>hover:ch-border-radius</code></li>
+                <li> <code>hover:ch-border-wave</code></li>
+                <li><code>hover:ch-border-shimmer</code></li>
+                <li><code>hover:ch-border-flow</code></li>
+              </ul>
+            </div>
+            <p style="margin-top: 15px;"><strong>Note:</strong> For border animations to work correctly, include an empty <code>&lt;span class="ch-animation-helper"&gt;&lt;/span&gt;</code> inside the animated element.</p>
+          </section>
+
+          <!-- Text Effects Section -->
+          <section id="text-effects" class="docs-section">
+            <h2>Text Effects</h2>
+            <p>Special animations designed specifically for text elements:</p>
+
+            <div class="example-container">
+              <div
+                class="example-preview"
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(2, 1fr);
+                  gap: 20px;
+                "
+              >
+                <div
+                  style="padding: 20px; background: white; border-radius: 8px"
+                >
+                  <h4 hover:ch-text-gradient-flow style="margin: 0">
+                    Gradient Flow
+                  </h4>
+                </div>
+                <div
+                  style="padding: 20px; background: white; border-radius: 8px"
+                >
+                  <h4 hover:ch-text-bounce style="margin: 0">text-bounce Effect</h4>
+                </div>
+              </div>
+              <div class="example-code">
+                <pre>
+&lt;h4 hover:ch-text-gradient-flow&gt;Gradient Flow&lt;/h4&gt;
+&lt;h4 hover:ch-text-bounce&gt;text-bounce Effect&lt;/h4&gt;</pre
+                >
+              </div>
+            </div>
+          </section>
+
+
+        </main>
+      </div>
+    </section>
+
+    <!-- Footer -->
+ <footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3><i class="fas fa-bolt"></i> ChangeHover</h3>
+        <p>
+          Lightweight CSS library with 150+ hover animations. Zero dependencies, pure CSS magic.
+        </p>
+         <div class="social-links">
+          <a href="https://github.com/rajkumarnimod/changehover" title="GitHub"><i class="fab fa-github footicon"></i></a>
+          <a href="https://www.linkedin.com/in/rajkumar-nimod" title="linkedin"><i class="fab fa-linkedin footicon"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="Documentation.html">Documentation</a></li>
+          <li><a href="index.html#showcase">Animation Gallery</a></li>
+          <li><a href="index.html#install">Installation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>GitHub</h3>
+        <ul class="footer-links">
+          <li><a href="https://github.com/rajkumarnimod/changehover">Repository</a></li>
+          <li><a href="https://github.com/rajkumarnimod/changehover/issues">Issues</a></li>
+          <li><a href="https://github.com/rajkumarnimod/changehover/blob/main/LICENSE">License</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">
+       &copy; 2025 ChangeHover | MIT Licensed
+      </div>
+    </div>
+  </div>
+</footer>
+    <script src="script.js"></script>
+  </body>
+</html>
